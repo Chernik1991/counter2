@@ -15,7 +15,7 @@ const res =()=>{
             <div>
                 <div className={"Button"}>
                     <button onClick={inc} className={s.Button}>INC</button>
-                    <button onClick={res} className={s.Button}>RES</button>
+                    <button onClick={res} className={s.Button}>RESET</button>
                 </div>
             </div>
         </div>
