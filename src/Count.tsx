@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import s from'./Count.module.css'
-export const Count = () => {
+export const Count = (props:any) => {
     let [value, setValue] = useState<number>(0)
     const inc = () => {
-        value = value + 1
+        if (value<props.maxValue){
+        value = value + 1}
         return setValue(value)
     }
 const res =()=>{
@@ -11,7 +12,7 @@ const res =()=>{
 }
     return (
         <div className={s.Count}>
-            <input value={value} className={s.Input}/>
+            <input value={value} className={s.Input} />
             <div>
                 <div className={s.ButtonBorder}>
                     <button onClick={inc} className={s.Button1}>INC</button>
