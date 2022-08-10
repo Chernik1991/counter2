@@ -1,0 +1,20 @@
+.Count {
+  background-color: black;
+  border: 1px solid red;
+  padding: 10px;
+  color: mediumaquamarine;
+  border-radius: 10px;
+  line-height: 3;
+}
+.Button{
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: aqua;
+}
+.Input{
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
