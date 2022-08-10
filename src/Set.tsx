@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import s from'./Set.module.css'
+import s from './Set.module.css'
+
 export const Set = () => {
     let [value, setValue] = useState<number>(0)
     const inc = () => {
@@ -11,18 +12,18 @@ export const Set = () => {
     }
     return (
         <div className={s.Set}>
-            <div>
-                Max value:
-                <input value={value} className={s.Input}/>
-            </div>
-            <div>
-                Start value:
-                <input value={0} className={s.Input}/>
-            </div>
-            <div>
-                <div className="Button">
-                    <button onClick={inc} className={s.Button}>SET</button>
+            <div className={s.ButtonBorder}>
+                <div>
+                    Max value:
+                    <input value={value} className={s.Input}/>
                 </div>
+                <div>
+                    Start value:
+                    <input value={0} className={s.Input}/>
+                </div>
+            </div>
+            <div className={s.ButtonBorder}>
+                <button onClick={inc} className={s.Button}>SET</button>
             </div>
         </div>
     );

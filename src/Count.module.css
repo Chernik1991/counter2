@@ -4,17 +4,40 @@
   padding: 10px;
   color: mediumaquamarine;
   border-radius: 10px;
-  line-height: 3;
+  vertical-align: top
+
 }
-.Button{
+.Button1{
   border: 1px solid red;
   padding: 10px;
   border-radius: 10px;
   background-color: aqua;
+  margin-right: 40px;
+  font-size: 20px
+;
 }
-.Input{
+.Button2{
   border: 1px solid red;
   padding: 10px;
   border-radius: 10px;
-  background-color: white;
+  background-color: aqua;
+  margin-left: 40px;
+  font-size: 20px
+}
+.Input{
+  border: 1px solid red;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: black;
+  color: aqua;
+  font-size: 30px;
+  height: 70px;
+  text-align: center;
+}
+.ButtonBorder{
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: black;
+  text-align: center;
 }

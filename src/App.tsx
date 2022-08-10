@@ -5,11 +5,9 @@ import './App.css'
 
 export const App = () => {
     return (
-        <div className="App">
-            <tr>
-                <th><Set/></th>
-                <th><Count/></th>
-            </tr>
+        <div className="App1">
+            <div className="App"><Set/></div>
+            <div className="App"><Count/></div>
         </div>
     );
 }

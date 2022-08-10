@@ -13,9 +13,9 @@ const res =()=>{
         <div className={s.Count}>
             <input value={value} className={s.Input}/>
             <div>
-                <div className={"Button"}>
-                    <button onClick={inc} className={s.Button}>INC</button>
-                    <button onClick={res} className={s.Button}>RESET</button>
+                <div className={s.ButtonBorder}>
+                    <button onClick={inc} className={s.Button1}>INC</button>
+                    <button onClick={res} className={s.Button2}>RESET</button>
                 </div>
             </div>
         </div>

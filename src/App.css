@@ -1,7 +1,18 @@
+.App1 {
+    background-color: black;
+    border-radius: 1em;
+    padding: 30em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+
+}
 .App {
-  background-color: black;
-  border: 1px solid red;
-  padding: 10px;
-  color: mediumaquamarine;
-  border-radius: 10px;
+    margin: 5px;
+    padding: 10px 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
 }
