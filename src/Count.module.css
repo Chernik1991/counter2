@@ -35,9 +35,16 @@
   text-align: center;
 }
 .ButtonBorder{
+  display:inline-block;
   border: 1px solid red;
   padding: 10px;
   border-radius: 10px;
   background-color: black;
   text-align: center;
+}
+.ButtonLi{
+  display:inline-block;
+  width: 190px;
+  padding: 2px;
+  background-color: black;
 }
