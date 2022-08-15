@@ -33,6 +33,20 @@
   font-size: 30px;
   height: 70px;
   text-align: center;
+  width: 270px;
+}
+.InputOff{
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: black;
+  color: red;
+  font-size: 40px;
+  height: 60px;
+  text-align: center;
+  font-weight: 900;
+  width: 290px;
+  height: 90px
 }
 .ButtonBorder{
   display:inline-block;
@@ -41,10 +55,12 @@
   border-radius: 10px;
   background-color: black;
   text-align: center;
+  width: 290px;
 }
 .ButtonLi{
   display:inline-block;
-  width: 190px;
+  width: 100px;
   padding: 2px;
   background-color: black;
+
 }

@@ -1,15 +1,21 @@
-import React from 'react';
+import React, {ChangeEventHandler} from 'react';
 
 type InputPropsType = {
-    type?:string
-    value:number
+    value:string
     className:string
+    onChange?:ChangeEventHandler<HTMLInputElement>
+    type?:string
 }
 
 export const Input = (props:InputPropsType) => {
+
     return (
         <>
-            <input type={props.type} step="1" value={props.value} min="1" max="100" className={props.className}/>
+            <input
+                type={props.type}
+                onChange={props.onChange}
+                value={props.value}
+                className={props.className}/>
         </>
     );
 };
