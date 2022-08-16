@@ -22,23 +22,23 @@ export const Count = (props: CountPropsType) => {
                         ? s.InputOff
                         : s.Input}/>
             <div>
-                <li className={s.ButtonBorder}>
-                    <li className={s.ButtonLi}>
+                <div className={s.ButtonBorder}>
+                    <div className={s.ButtonLi}>
 
                         <Button
                             disable={props.value === props.maxValue}
                             callback={props.inc}
                             className={s.Button1}
                             name={'INC'}/>
-                    </li>
-                    <li className={s.ButtonLi}>
+                    </div>
+                    <div className={s.ButtonLi}>
                         <Button
                             disable={props.value === props.minValue}
                             callback={props.reset}
                             className={s.Button2}
                             name={'RESET'}/>
-                    </li>
-                </li>
+                    </div>
+                </div>
             </div>
         </div>
     )
