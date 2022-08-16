@@ -7,14 +7,15 @@ type SetPropsType = {
     maxValue: number,
     minValue: number,
     setButton: (maxValue: number, minValue: number) => void
+    incorrectValue: (maxValue: number, minValue: number) => boolean
 }
 export const Set = (props: SetPropsType) => {
     let [maxValue, setMaxValue] = useState<number>(props.maxValue)
-    const onChangeTitleMax = (e:ChangeEvent<HTMLInputElement>) => {
+    const onChangeTitleMax = (e: ChangeEvent<HTMLInputElement>) => {
         setMaxValue(Number(e.currentTarget.value))
     }
     let [minValue, setMinValue] = useState<number>(props.minValue)
-    const onChangeTitleMin = (e:ChangeEvent<HTMLInputElement>) => {
+    const onChangeTitleMin = (e: ChangeEvent<HTMLInputElement>) => {
         setMinValue(Number(e.currentTarget.value))
     }
     return (
@@ -23,11 +24,10 @@ export const Set = (props: SetPropsType) => {
                 <div>
                     Max value:
                     <Input
-
                         onChange={onChangeTitleMax}
                         value={String(maxValue)}
                         className={s.Input}
-                        type={"number"}
+                        type={'number'}
                     />
                 </div>
                 <div>
@@ -36,13 +36,17 @@ export const Set = (props: SetPropsType) => {
                         onChange={onChangeTitleMin}
                         value={String(minValue)}
                         className={s.Input}
-                        type={"number"}
+                        type={'number'}
                     />
                 </div>
             </div>
             <div className={s.ButtonBorder}>
                 <Button
-                    callback={()=>props.setButton(maxValue,minValue)}
+                    disable={
+                        ((minValue === props.minValue) && (maxValue === props.maxValue))
+                        ||(props.incorrectValue(maxValue, minValue))
+                    }
+                    callback={() => props.setButton(maxValue, minValue)}
                     className={s.Button}
                     name={'SET'}/>
             </div>

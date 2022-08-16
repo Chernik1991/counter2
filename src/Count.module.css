@@ -33,7 +33,7 @@
   font-size: 30px;
   height: 70px;
   text-align: center;
-  width: 270px;
+  width: 370px;
 }
 .InputOff{
   border: 1px solid red;
@@ -42,10 +42,9 @@
   background-color: black;
   color: red;
   font-size: 40px;
-  height: 60px;
   text-align: center;
   font-weight: 900;
-  width: 290px;
+  width: 390px;
   height: 90px
 }
 .ButtonBorder{
@@ -55,7 +54,7 @@
   border-radius: 10px;
   background-color: black;
   text-align: center;
-  width: 290px;
+  width: 390px;
 }
 .ButtonLi{
   display:inline-block;

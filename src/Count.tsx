@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from './Count.module.css'
 import {Button} from './component/Button';
 import {Input} from './component/Input';
@@ -6,29 +6,19 @@ import {Input} from './component/Input';
 type CountPropsType = {
     maxValue: number,
     minValue: number,
-    reset:()=>void
+    value: number,
+    reset: () => void,
+    inc: () => void,
+    valueResult: string,
 }
 
 export const Count = (props: CountPropsType) => {
-    let [value, setValue] = useState<number>(props.minValue)
-    const inc = () => {
-        if (value < props.maxValue) {
-            value = value + 1
-        }
-        return setValue(value)
-    }
-    const res = () => {
-        if(props.reset){
-        return (
-            setValue(props.minValue)
-        )}
-    }
     return (
         <div className={s.Count}>
             <Input
-                value={String(value)}
+                value={props.valueResult}
                 className={
-                    value === props.maxValue
+                    props.value === props.maxValue
                         ? s.InputOff
                         : s.Input}/>
             <div>
@@ -36,15 +26,15 @@ export const Count = (props: CountPropsType) => {
                     <li className={s.ButtonLi}>
 
                         <Button
-                            disable={value === props.maxValue}
-                            callback={inc}
+                            disable={props.value === props.maxValue}
+                            callback={props.inc}
                             className={s.Button1}
                             name={'INC'}/>
                     </li>
                     <li className={s.ButtonLi}>
                         <Button
-                            disable={value === props.minValue}
-                            callback={res}
+                            disable={props.value === props.minValue}
+                            callback={props.reset}
                             className={s.Button2}
                             name={'RESET'}/>
                     </li>

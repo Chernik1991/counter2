@@ -1,7 +1,7 @@
 import React, {ChangeEventHandler} from 'react';
 
 type InputPropsType = {
-    value:string
+    value:string,
     className:string
     onChange?:ChangeEventHandler<HTMLInputElement>
     type?:string
