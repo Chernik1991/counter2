@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import s from './Set.module.css'
 import {Button} from './component/Button';
 import {Input} from './component/Input';
@@ -9,23 +9,37 @@ type SetPropsType = {
     setButton: (maxValue: number, minValue: number) => void
     incorrectValue: (maxValue: number, minValue: number) => boolean
 }
+
 export const Set = (props: SetPropsType) => {
-    let [maxValue, setMaxValue] = useState<number>(props.maxValue)
+    let [maxValueSet, setMaxValueSet] = useState<number>(props.maxValue)
     const onChangeTitleMax = (e: ChangeEvent<HTMLInputElement>) => {
-        setMaxValue(Number(e.currentTarget.value))
+        setMaxValueSet(Number(e.currentTarget.value))
     }
-    let [minValue, setMinValue] = useState<number>(props.minValue)
+    let [minValueSet, setMinValueSet] = useState<number>(props.minValue)
     const onChangeTitleMin = (e: ChangeEvent<HTMLInputElement>) => {
-        setMinValue(Number(e.currentTarget.value))
+        setMinValueSet(Number(e.currentTarget.value))
     }
-    return (
+    useEffect(() => {
+        let maxValueStart = localStorage.getItem('maxValueStart')
+        if (maxValueStart) {
+            setMaxValueSet(JSON.parse(maxValueStart))
+        }
+    }, [])
+    useEffect(() => {
+        let minValueStart = localStorage.getItem('minValueStart')
+        if (minValueStart) {
+            let newMinValueStart=JSON.parse(minValueStart)
+            setMinValueSet(newMinValueStart)
+        }
+    }, [])
+       return (
         <div className={s.Set}>
             <div className={s.ButtonBorder}>
                 <div>
                     Max value:
                     <Input
                         onChange={onChangeTitleMax}
-                        value={String(maxValue)}
+                        value={String(maxValueSet)}
                         className={s.Input}
                         type={'number'}
                     />
@@ -34,7 +48,7 @@ export const Set = (props: SetPropsType) => {
                     Start value:
                     <Input
                         onChange={onChangeTitleMin}
-                        value={String(minValue)}
+                        value={String(minValueSet)}
                         className={s.Input}
                         type={'number'}
                     />
@@ -43,10 +57,10 @@ export const Set = (props: SetPropsType) => {
             <div className={s.ButtonBorder}>
                 <Button
                     disable={
-                        ((minValue === props.minValue) && (maxValue === props.maxValue))
-                        ||(props.incorrectValue(maxValue, minValue))
+                        ((minValueSet === props.minValue) && (maxValueSet === props.maxValue))
+                        ||(props.incorrectValue(maxValueSet, minValueSet))
                     }
-                    callback={() => props.setButton(maxValue, minValue)}
+                    callback={() => props.setButton(maxValueSet, minValueSet)}
                     className={s.Button}
                     name={'SET'}/>
             </div>

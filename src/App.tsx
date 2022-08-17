@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Count} from './Count';
 import {Set} from './Set';
 import './App.css'
@@ -9,36 +9,17 @@ export const App = () => {
     let [value, setValue] = useState<number>(minValue);
     let [mistake, setMistake] = useState<string>(String(minValue));
 
-    useEffect(() => {
-        let maxValueStart = localStorage.getItem('maxValue')
-        if (maxValueStart) {
-            setMaxValue(JSON.parse(maxValueStart))
-        }
-    }, [])
-    useEffect(() => {
-        let minValueStart = localStorage.getItem('minValue')
-        if (minValueStart) {
-            let newMinValueStart=JSON.parse(minValueStart)
-            setMinValue(newMinValueStart)
-        }
-    }, [])
-    // useEffect(() => {
-    //     localStorage.setItem('maxValue', JSON.stringify(maxValue))
-    // }, [])
-    // useEffect(() => {
-    //
-    //     localStorage.setItem('minValue', JSON.stringify(minValue))
-    // }, [])
-
-    const setButton = (maxValue: number, minValue: number) => {
-        setMaxValue(maxValue)
-        setMinValue(minValue)
+    const setButton = (maxValueSet: number, minValueSet: number) => {
+        setMaxValue(maxValueSet)
+        setMinValue(minValueSet)
         setMistake(String(value))
-        localStorage.setItem('minValue', JSON.stringify(minValue))
-        localStorage.setItem('maxValue', JSON.stringify(maxValue))
-        return (setValue(minValue))
-    }
+        localStorage.setItem('maxValueStart', JSON.stringify(maxValueSet))
+        localStorage.setItem('minValueStart', JSON.stringify(minValueSet))
+        return (
+            (setValue(minValue))
 
+        )
+    }
     const reset = () => {
         setMistake(String(minValue))
         return (
@@ -84,7 +65,8 @@ export const App = () => {
                     inc={inc}
                     value={value}
                     valueResult={mistake}
-                /></div>
+                />
+            </div>
         </div>
     );
 }
