@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Count.module.css'
-import {Button} from './component/Button';
-import {Input} from './component/Input';
+import {Button} from './Button';
+import {Input} from './Input';
 
 type CountPropsType = {
     maxValue: number,
@@ -18,9 +18,10 @@ export const Count = (props: CountPropsType) => {
             <Input
                 value={props.valueResult}
                 className={
-                    props.value === props.maxValue
+                    (props.value ===props.maxValue)
                         ? s.InputOff
-                        : s.Input}/>
+                        : s.Input}
+            />
             <div>
                 <div className={s.ButtonBorder}>
                     <div className={s.ButtonLi}>
