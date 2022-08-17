@@ -6,8 +6,8 @@ import {Input} from './component/Input';
 type SetPropsType = {
     maxValue: number,
     minValue: number,
-    setButton: (maxValue: number, minValue: number) => void
-    incorrectValue: (maxValue: number, minValue: number) => boolean
+    setButton: (maxValueSet: number, minValueSet: number) => void
+    incorrectValue: (maxValueSet: number, minValueSet: number) => boolean
 }
 
 export const Set = (props: SetPropsType) => {
@@ -24,14 +24,14 @@ export const Set = (props: SetPropsType) => {
         if (maxValueStart) {
             setMaxValueSet(JSON.parse(maxValueStart))
         }
-    }, [])
+    }, [props.maxValue])
     useEffect(() => {
         let minValueStart = localStorage.getItem('minValueStart')
         if (minValueStart) {
             let newMinValueStart=JSON.parse(minValueStart)
             setMinValueSet(newMinValueStart)
         }
-    }, [])
+    }, [props.minValue])
        return (
         <div className={s.Set}>
             <div className={s.ButtonBorder}>
