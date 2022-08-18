@@ -8,16 +8,27 @@ export const App = () => {
     let [minValue, setMinValue] = useState(0);
     let [value, setValue] = useState<number>(minValue);
     let [mistake, setMistake] = useState<string>(String(minValue));
+    let [maxValueSetSet, setMaxValueSetSet] = useState<number>(maxValue);
+    let [minValueSetSet, setMinValueSetSet] = useState<number>(minValue);
 
-    const setButton = (maxValueSet: number, minValueSet: number) => {
-        setMaxValue(maxValueSet)
-        setMinValue(minValueSet)
+    const setMaxValueSet = (value: string) => {
+        setMaxValueSetSet(Number(value))
+    }
+    const setMinValueSet = (value: string) => {
+        setMinValueSetSet(Number(value))
+    }
+    const disableButton=()=>{
+        if (((minValueSetSet === minValue) && (maxValueSetSet === maxValue))
+            ||(incorrectValue(maxValueSetSet, minValueSetSet))){
+            return true
+        }
+    }
+    const setButton = () => {
+        setMaxValue(maxValueSetSet)
+        setMinValue(minValueSetSet)
         setMistake(String(value))
-        localStorage.setItem('maxValueStart', JSON.stringify(maxValueSet))
-        localStorage.setItem('minValueStart', JSON.stringify(minValueSet))
         return (
-            (setValue(minValue))
-
+            setValue(minValueSetSet)
         )
     }
     const reset = () => {
@@ -37,24 +48,29 @@ export const App = () => {
 
         if (minValue < 0) {
             setMistake('Incorrect value')
+            return true
         } else if (maxValue <= minValue) {
             setMistake('Incorrect value')
+            return true
         } else {
             setValue(minValue)
             setMistake('enter values and press \'set\'')
+            return false
         }
 
-        return ((maxValue <= minValue) || (minValue < 0))
+        // return ((maxValue <= minValue) || (minValue < 0))
 
     }
     return (
         <div className="App1">
             <div className="App">
                 <Set
-                    maxValue={maxValue}
-                    minValue={minValue}
+                    disableButton={disableButton}
+                    minValueSetSet={minValueSetSet}
+                    setMinValueSet={setMinValueSet}
+                    maxValueSetSet={maxValueSetSet}
+                    setMaxValueSet={setMaxValueSet}
                     setButton={setButton}
-                    incorrectValue={incorrectValue}
                 />
             </div>
             <div className="App">
