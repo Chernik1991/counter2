@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Count} from './Count';
-import {Set} from './Set';
+import {Count} from './component/Count';
+import {Set} from './component/Set';
 import './App.css'
 
 export const App = () => {
@@ -8,27 +8,27 @@ export const App = () => {
     let [minValue, setMinValue] = useState(0);
     let [value, setValue] = useState<number>(minValue);
     let [mistake, setMistake] = useState<string>(String(minValue));
-    let [maxValueSetSet, setMaxValueSetSet] = useState<number>(maxValue);
-    let [minValueSetSet, setMinValueSetSet] = useState<number>(minValue);
+    let [maxValueSet, setMaxValueSet] = useState<number>(maxValue);
+    let [minValueSet, setMinValueSet] = useState<number>(minValue);
 
-    const setMaxValueSet = (value: string) => {
-        setMaxValueSetSet(Number(value))
+    const MaxValueSetSet = (value: string) => {
+        setMaxValueSet(Number(value))
     }
-    const setMinValueSet = (value: string) => {
-        setMinValueSetSet(Number(value))
+    const MinValueSetSet = (value: string) => {
+        setMinValueSet(Number(value))
     }
     const disableButton=()=>{
-        if (((minValueSetSet === minValue) && (maxValueSetSet === maxValue))
-            ||(incorrectValue(maxValueSetSet, minValueSetSet))){
+        if (((minValueSet === minValue) && (maxValueSet === maxValue))
+            ||(incorrectValue(maxValueSet, minValueSet))){
             return true
         }
     }
     const setButton = () => {
-        setMaxValue(maxValueSetSet)
-        setMinValue(minValueSetSet)
+        setMaxValue(maxValueSet)
+        setMinValue(minValueSet)
         setMistake(String(value))
         return (
-            setValue(minValueSetSet)
+            setValue(minValueSet)
         )
     }
     const reset = () => {
@@ -66,10 +66,10 @@ export const App = () => {
             <div className="App">
                 <Set
                     disableButton={disableButton}
-                    minValueSetSet={minValueSetSet}
-                    setMinValueSet={setMinValueSet}
-                    maxValueSetSet={maxValueSetSet}
-                    setMaxValueSet={setMaxValueSet}
+                    minValueSet={minValueSet}
+                    setMinValueSet={MinValueSetSet}
+                    maxValueSet={maxValueSet}
+                    setMaxValueSet={MaxValueSetSet}
                     setButton={setButton}
                 />
             </div>

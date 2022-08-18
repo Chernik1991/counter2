@@ -6,18 +6,18 @@ import {Input} from './Input';
 type SetPropsType = {
     setButton: () => void
     disableButton:()=>void
-    setMinValueSetSet:(value:string)=>void
-    setMaxValueSetSet:(value:string)=>void
+    setMinValueSet:(value:string)=>void
+    setMaxValueSet:(value:string)=>void
     maxValueSet:number
     minValueSet:number
 }
 
 export const Set = (props: SetPropsType) => {
     const onChangeTitleMax = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMaxValueSetSet(e.currentTarget.value)
+        props.setMaxValueSet(e.currentTarget.value)
     }
     const onChangeTitleMin = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMinValueSetSet(e.currentTarget.value)
+        props.setMinValueSet(e.currentTarget.value)
     }
        return (
         <div className={s.Set}>
@@ -44,7 +44,7 @@ export const Set = (props: SetPropsType) => {
             <div className={s.ButtonBorder}>
                 <Button
                     disable={
-                        Boolean(props.disableButton)
+                        Boolean(props.disableButton())
                     }
                     callback={props.setButton}
                     className={s.Button}
