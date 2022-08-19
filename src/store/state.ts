@@ -1,7 +1,6 @@
 import {combineReducers, createStore} from 'redux';
-//
-// const reducers = combineReducers({
-//     set: setReducer,
-// });
-// export type IGlobalState = ReturnType<typeof reducers>;
-// export const state=createStore(reducer)
+
+const rootReducers = combineReducers({
+    set: setReducer,
+});
+export const state=createStore(rootReducers)

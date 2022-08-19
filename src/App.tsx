@@ -4,8 +4,8 @@ import {Set} from './component/Set';
 import './App.css'
 
 export const App = () => {
-    let [maxValue, setMaxValue] = useState(1);
-    let [minValue, setMinValue] = useState(0);
+    let [maxValue, setMaxValue] = useState<number>(1);
+    let [minValue, setMinValue] = useState<number>(0);
     let [value, setValue] = useState<number>(minValue);
     let [mistake, setMistake] = useState<string>(String(minValue));
     let [maxValueSet, setMaxValueSet] = useState<number>(maxValue);
