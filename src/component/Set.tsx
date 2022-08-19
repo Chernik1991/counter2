@@ -4,7 +4,7 @@ import {Button} from './Button';
 import {Input} from './Input';
 
 type SetPropsType = {
-    setButton: () => void
+    setButton:() => void
     disableButton:()=>void
     setMinValueSet:(value:string)=>void
     setMaxValueSet:(value:string)=>void
@@ -43,9 +43,7 @@ export const Set = (props: SetPropsType) => {
             </div>
             <div className={s.ButtonBorder}>
                 <Button
-                    disable={
-                        Boolean(props.disableButton())
-                    }
+                    disable={Boolean(props.disableButton())}
                     callback={props.setButton}
                     className={s.Button}
                     name={'SET'}/>
