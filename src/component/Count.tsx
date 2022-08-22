@@ -9,14 +9,14 @@ type CountPropsType = {
     value: number,
     reset: () => void,
     inc: () => void,
-    valueResult: string,
+    mistake: string,
 }
 
 export const Count = (props: CountPropsType) => {
     return (
         <div className={s.Count}>
             <Input
-                value={props.valueResult}
+                value={props.mistake}
                 className={
                     (props.value ===props.maxValue)
                         ? s.InputOff

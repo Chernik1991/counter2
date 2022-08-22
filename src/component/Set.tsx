@@ -2,6 +2,7 @@ import React, {ChangeEvent} from 'react';
 import s from './Set.module.css'
 import {Button} from './Button';
 import {Input} from './Input';
+import {store} from '../store/state';
 
 type SetPropsType = {
     setButton:() => void
@@ -43,7 +44,7 @@ export const Set = (props: SetPropsType) => {
             </div>
             <div className={s.ButtonBorder}>
                 <Button
-                    disable={Boolean(props.disableButton())}
+                    disable={store.getState().set.disableSet}
                     callback={props.setButton}
                     className={s.Button}
                     name={'SET'}/>
