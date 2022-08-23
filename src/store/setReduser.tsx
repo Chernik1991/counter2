@@ -26,12 +26,20 @@ type ReducerType =
 export const setReducer = (state: setStateType = initialState, action: ReducerType): setStateType => {
     switch (action.type) {
         case 'RESET':
-            return {...state, mistake: String(action.minValue), value: action.minValue}
+            return {
+                ...state,
+                mistake: String(action.minValue),
+                value: action.minValue
+            }
         case 'INC':
             if (action.value < action.maxValue) {
                 action.value = action.value + 1
             }
-            return {...state, mistake: String(action.value), value: action.value}
+            return {
+                ...state,
+                mistake: String(action.value),
+                value: action.value
+            }
         case 'SET-BUTTON':
             return {
                 ...state,
@@ -39,20 +47,47 @@ export const setReducer = (state: setStateType = initialState, action: ReducerTy
                 minValue: action.minValueSet,
                 maxValue: action.maxValueSet,
                 value: action.minValueSet,
-                disableSet:true
+                disableSet: true
             }
         case 'MAX-VALUE-SET-SET':
             if (Number(action.value) <= action.minValueSet) {
-                return {...state, mistake: 'Incorrect value', disableSet: true,maxValueSet: Number(action.value)}}
-            else {return {...state, maxValueSet: Number(action.value),disableSet: false, mistake: 'enter values and press \'set\''}}
+                return {
+                    ...state,
+                    mistake: 'Incorrect value',
+                    disableSet: true,
+                    maxValueSet: Number(action.value)
+                }
+            } else {
+                return {
+                    ...state,
+                    maxValueSet: Number(action.value),
+                    disableSet: false,
+                    mistake: 'enter values and press \'set\''
+                }
+            }
         case 'MIN-VALUE-SET-SET':
             if (Number(action.value) < 0) {
-                return {...state, mistake: 'Incorrect value', disableSet: true,minValueSet: Number(action.value)}
+                return {
+                    ...state,
+                    mistake: 'Incorrect value',
+                    disableSet: true,
+                    minValueSet: Number(action.value)
+                }
             } else if
             (Number(action.value) >= action.maxValueSet) {
-                return {...state, mistake: 'Incorrect value', disableSet: true, minValueSet: Number(action.value)}
+                return {
+                    ...state,
+                    mistake: 'Incorrect value',
+                    disableSet: true,
+                    minValueSet: Number(action.value)
+                }
             } else {
-                return {...state, minValueSet: Number(action.value), disableSet: false, mistake: 'enter values and press \'set\''}
+                return {
+                    ...state,
+                    minValueSet: Number(action.value),
+                    disableSet: false,
+                    mistake: 'enter values and press \'set\''
+                }
             }
         default:
             return state
@@ -63,9 +98,9 @@ export type MaxValueSetSetActionType = {
     value: string,
     minValueSet: number
 }
-export const MaxValueSetSetAC = (value: string,minValueSet: number): MaxValueSetSetActionType => {
+export const MaxValueSetSetAC = (value: string, minValueSet: number): MaxValueSetSetActionType => {
     return {
-        type: 'MAX-VALUE-SET-SET', value,minValueSet
+        type: 'MAX-VALUE-SET-SET', value, minValueSet
     }
 }
 export type MinValueSetSetActionType = {
