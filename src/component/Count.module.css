@@ -1,6 +1,6 @@
 .Count {
   background-color: black;
-  border: 1px solid red;
+  border: 1px solid aqua;
   padding: 10px;
   color: mediumaquamarine;
   border-radius: 10px;
@@ -25,7 +25,7 @@
   font-size: 20px
 }
 .Input{
-  border: 1px solid red;
+  border: 1px solid aqua;
   padding: 20px;
   border-radius: 10px;
   background-color: black;
@@ -49,7 +49,7 @@
 }
 .ButtonBorder{
   display:inline-block;
-  border: 1px solid red;
+  border: 1px solid aqua;
   padding: 10px;
   border-radius: 10px;
   background-color: black;

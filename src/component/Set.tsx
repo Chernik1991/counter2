@@ -2,11 +2,11 @@ import React, {ChangeEvent} from 'react';
 import s from './Set.module.css'
 import {Button} from './Button';
 import {Input} from './Input';
-import {store} from '../store/state';
 
 type SetPropsType = {
     setButton:() => void
-    disableButton:()=>void
+    mistake:string
+    disableSet:boolean
     setMinValueSet:(value:string)=>void
     setMaxValueSet:(value:string)=>void
     maxValueSet:number
@@ -28,7 +28,10 @@ export const Set = (props: SetPropsType) => {
                     <Input
                         onChange={onChangeTitleMax}
                         value={String(props.maxValueSet)}
-                        className={s.Input}
+                        className={
+                            (props.mistake==='Incorrect value')
+                                ? s.InputOff
+                                : s.Input}
                         type={'number'}
                     />
                 </div>
@@ -37,14 +40,17 @@ export const Set = (props: SetPropsType) => {
                     <Input
                         onChange={onChangeTitleMin}
                         value={String(props.minValueSet)}
-                        className={s.Input}
+                        className={
+                            (props.mistake==='Incorrect value')
+                                ? s.InputOff
+                                : s.Input}
                         type={'number'}
                     />
                 </div>
             </div>
             <div className={s.ButtonBorder}>
                 <Button
-                    disable={store.getState().set.disableSet}
+                    disable={props.disableSet}
                     callback={props.setButton}
                     className={s.Button}
                     name={'SET'}/>

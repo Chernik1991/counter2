@@ -1,6 +1,6 @@
 .Set {
     background-color: black;
-    border: 1px solid red;
+    border: 1px solid aqua;
     padding: 10px;
     color: mediumaquamarine;
     border-radius: 10px;
@@ -16,17 +16,26 @@
 
 }
 .Input {
-    border: 1px solid red;
+    border: 3px solid aqua;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-size: 20px
+}
+.InputOff{
+    border: 2px solid red;
     padding: 10px;
     border-radius: 10px;
     background-color: black;
-    color: aqua;
+    color: red;
     text-align: center;
     font-size: 20px
 }
 
 .ButtonBorder {
-    border: 1px solid red;
+    border: 1px solid aqua;
     padding: 10px;
     border-radius: 10px;
     background-color: black;

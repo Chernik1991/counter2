@@ -2,7 +2,7 @@ import React from 'react';
 import {Count} from './component/Count';
 import {Set} from './component/Set';
 import './App.css'
-import {DisableButtonAC, incAC, MaxValueSetSetAC, MinValueSetSetAC, resetAC, setButtonAC} from './store/setReduser';
+import {incAC, MaxValueSetSetAC, MinValueSetSetAC, resetAC, setButtonAC} from './store/setReduser';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootState, store} from './store/state';
 
@@ -16,29 +16,29 @@ export const App = () => {
     // let [maxValueSet, setMaxValueSet] = useState<number>(maxValue);
     // let [minValueSet, setMinValueSet] = useState<number>(minValue);
     const state = store.getState().set
-    const maxValue = store.getState().set.maxValue
-    const minValue = store.getState().set.minValue
-    const value = store.getState().set.value
-    const mistake = store.getState().set.mistake
-    const maxValueSet = store.getState().set.maxValueSet
-    const minValueSet = store.getState().set.minValueSet
-    const disableSet = store.getState().set.disableSet
+    const maxValue = state.maxValue
+    const minValue = state.minValue
+    const value = state.value
+    const mistake = state.mistake
+    const maxValueSet = state.maxValueSet
+    const minValueSet = state.minValueSet
+    const disableSet = state.disableSet
 
 
     const MaxValueSetSet = (value: string) => {
-        const action = MaxValueSetSetAC(value);
+        const action = MaxValueSetSetAC(value,minValueSet);
         dispatch(action);
         console.log(value)
     }
     const MinValueSetSet = (value: string) => {
-        const action = MinValueSetSetAC(value,minValueSet);
+        const action = MinValueSetSetAC(value,maxValueSet);
         dispatch(action);
         console.log(value)
     }
-    const disableButton = () => {
-        const action = DisableButtonAC(maxValueSet, minValueSet, maxValue, minValue);
-        dispatch(action);
-    }
+    // const disableButton = () => {
+    //     const action = DisableButtonAC(maxValueSet, minValueSet, maxValue, minValue);
+    //     dispatch(action);
+    // }
     const setButton = () => {
         const action = setButtonAC(maxValueSet, minValueSet);
         dispatch(action);
@@ -58,7 +58,8 @@ export const App = () => {
         <div className="App1">
             <div className="App">
                 <Set
-                    disableButton={disableButton}
+                    mistake={mistake}
+                    disableSet={disableSet}
                     minValueSet={minValueSet}
                     setMinValueSet={MinValueSetSet}
                     maxValueSet={maxValueSet}
@@ -68,6 +69,7 @@ export const App = () => {
             </div>
             <div className="App">
                 <Count
+                    disableSet={disableSet}
                     maxValue={maxValue}
                     minValue={minValue}
                     reset={reset}
