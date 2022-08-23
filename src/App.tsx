@@ -9,12 +9,6 @@ import {AppRootState, store} from './store/state';
 export const App = () => {
     const dispatch = useDispatch();
     const set=useSelector<AppRootState>(state=>state.set)
-    // let [maxValue, setMaxValue] = useState<number>(1);
-    // let [minValue, setMinValue] = useState<number>(0);
-    // let [value, setValue] = useState<number>(minValue);
-    // let [mistake, setMistake] = useState<string>(String(minValue));
-    // let [maxValueSet, setMaxValueSet] = useState<number>(maxValue);
-    // let [minValueSet, setMinValueSet] = useState<number>(minValue);
     const state = store.getState().set
     const maxValue = state.maxValue
     const minValue = state.minValue
@@ -35,10 +29,6 @@ export const App = () => {
         dispatch(action);
         console.log(value)
     }
-    // const disableButton = () => {
-    //     const action = DisableButtonAC(maxValueSet, minValueSet, maxValue, minValue);
-    //     dispatch(action);
-    // }
     const setButton = () => {
         const action = setButtonAC(maxValueSet, minValueSet);
         dispatch(action);
