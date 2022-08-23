@@ -22,19 +22,14 @@ export const App = () => {
     const MaxValueSetSet = (value: string) => {
         const action = MaxValueSetSetAC(value,minValueSet);
         dispatch(action);
-        console.log(value)
     }
     const MinValueSetSet = (value: string) => {
         const action = MinValueSetSetAC(value,maxValueSet);
         dispatch(action);
-        console.log(value)
     }
     const setButton = () => {
         const action = setButtonAC(maxValueSet, minValueSet);
         dispatch(action);
-        console.log(maxValueSet)
-        console.log(minValueSet)
-        console.log(value)
     }
     const reset = () => {
         const action = resetAC(minValue);
