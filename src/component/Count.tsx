@@ -32,14 +32,14 @@ export const Count = (props: CountPropsType) => {
                         <Button
                             disable={(props.value === props.maxValue)||(props.mistake==='Incorrect value')}
                             callback={props.inc}
-                            className={s.Button1}
+                            className={s.Button}
                             name={'INC'}/>
                     </div>
                     <div className={s.ButtonLi}>
                         <Button
                             disable={props.value === props.minValue}
                             callback={props.reset}
-                            className={s.Button2}
+                            className={s.Button}
                             name={'RESET'}/>
                     </div>
                 </div>
