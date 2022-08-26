@@ -16,10 +16,8 @@ export const Set = ({set}: SetPropsType) => {
     const onChangeTitleMax = (e: ChangeEvent<HTMLInputElement>) => {
         const action = MaxValueSetSetAC(e.currentTarget.value, minValueSet);
         dispatch(action);
-        // props.setMaxValueSet(e.currentTarget.value)
     }
     const onChangeTitleMin = (e: ChangeEvent<HTMLInputElement>) => {
-        // props.setMinValueSet(e.currentTarget.value)
         const action = MinValueSetSetAC(e.currentTarget.value, maxValueSet);
         dispatch(action);
     }

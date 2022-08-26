@@ -7,13 +7,6 @@ import {useDispatch} from 'react-redux';
 
 type CountPropsType = {
     set: setStateType
-    // disableSet:boolean
-    // maxValue: number,
-    // minValue: number,
-    // value: number,
-    // reset: () => void,
-    // inc: () => void,
-    // mistake: string,
 }
 export const Count = ({set}: CountPropsType) => {
     const dispatch = useDispatch();
