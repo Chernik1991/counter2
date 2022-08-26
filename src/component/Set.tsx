@@ -2,34 +2,41 @@ import React, {ChangeEvent} from 'react';
 import s from './Set.module.css'
 import {Button} from './Button';
 import {Input} from './Input';
+import {useDispatch} from 'react-redux';
+import {MaxValueSetSetAC, MinValueSetSetAC, setButtonAC, setStateType} from '../store/setReduser';
 
 type SetPropsType = {
-    setButton:() => void
-    mistake:string
-    disableSet:boolean
-    setMinValueSet:(value:string)=>void
-    setMaxValueSet:(value:string)=>void
-    maxValueSet:number
-    minValueSet:number
+    set: setStateType
 }
 
-export const Set = (props: SetPropsType) => {
+export const Set = ({set}: SetPropsType) => {
+    const dispatch = useDispatch();
+    const {minValueSet, mistake, maxValueSet, disableSet} = set
+
     const onChangeTitleMax = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMaxValueSet(e.currentTarget.value)
+        const action = MaxValueSetSetAC(e.currentTarget.value, minValueSet);
+        dispatch(action);
+        // props.setMaxValueSet(e.currentTarget.value)
     }
     const onChangeTitleMin = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMinValueSet(e.currentTarget.value)
+        // props.setMinValueSet(e.currentTarget.value)
+        const action = MinValueSetSetAC(e.currentTarget.value, maxValueSet);
+        dispatch(action);
     }
-       return (
+    const setButton = () => {
+        const action = setButtonAC(maxValueSet, minValueSet);
+        dispatch(action);
+    }
+    return (
         <div className={s.Set}>
             <div className={s.ButtonBorder}>
                 <div>
                     Max value:
                     <Input
                         onChange={onChangeTitleMax}
-                        value={String(props.maxValueSet)}
+                        value={String(maxValueSet)}
                         className={
-                            (props.mistake==='Incorrect value')
+                            (mistake === 'Incorrect value')
                                 ? s.InputOff
                                 : s.Input}
                         type={'number'}
@@ -39,9 +46,9 @@ export const Set = (props: SetPropsType) => {
                     Start value:
                     <Input
                         onChange={onChangeTitleMin}
-                        value={String(props.minValueSet)}
+                        value={String(minValueSet)}
                         className={
-                            (props.mistake==='Incorrect value')
+                            (mistake === 'Incorrect value')
                                 ? s.InputOff
                                 : s.Input}
                         type={'number'}
@@ -50,8 +57,8 @@ export const Set = (props: SetPropsType) => {
             </div>
             <div className={s.ButtonBorder}>
                 <Button
-                    disable={props.disableSet}
-                    callback={props.setButton}
+                    disable={disableSet}
+                    callback={setButton}
                     className={s.Button}
                     name={'SET'}/>
             </div>
