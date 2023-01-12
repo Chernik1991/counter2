@@ -8,7 +8,7 @@ export type setStateType = {
     disableSet: boolean,
 }
 
-const initialState: setStateType = {
+const initialState = {
     maxValue: 1,
     minValue: 0,
     value: 0,
@@ -23,7 +23,9 @@ type ReducerType =
     | SetButtonActionType
     | MaxValueSetSetActionType
     | MinValueSetSetActionType
-export const setReducer = (state: setStateType = initialState, action: ReducerType): setStateType => {
+
+type InitialStateType = typeof initialState
+export const setReducer = (state = initialState, action: ReducerType): InitialStateType => {
     switch (action.type) {
         case 'RESET':
             return {
@@ -33,6 +35,7 @@ export const setReducer = (state: setStateType = initialState, action: ReducerTy
             }
         case 'INC':
             if (action.value < action.maxValue) {
+                // @ts-ignore
                 action.value = action.value + 1
             }
             return {
@@ -93,47 +96,32 @@ export const setReducer = (state: setStateType = initialState, action: ReducerTy
             return state
     }
 }
-export type MaxValueSetSetActionType = {
-    type: 'MAX-VALUE-SET-SET',
-    value: string,
-    minValueSet: number
+export type MaxValueSetSetActionType = ReturnType<typeof MaxValueSetSetAC>
+export const MaxValueSetSetAC = (value: string, minValueSet: number) => {
+    return {type: 'MAX-VALUE-SET-SET', value, minValueSet} as const
 }
-export const MaxValueSetSetAC = (value: string, minValueSet: number): MaxValueSetSetActionType => {
-    return {
-        type: 'MAX-VALUE-SET-SET', value, minValueSet
-    }
+export type MinValueSetSetActionType = ReturnType<typeof MinValueSetSetAC>
+export const MinValueSetSetAC = (value: string, maxValueSet: number) => {
+    return {type: 'MIN-VALUE-SET-SET', value, maxValueSet} as const
 }
-export type MinValueSetSetActionType = {
-    type: 'MIN-VALUE-SET-SET',
-    value: string,
-    maxValueSet: number
-}
-export const MinValueSetSetAC = (value: string, maxValueSet: number): MinValueSetSetActionType => {
-    return {
-        type: 'MIN-VALUE-SET-SET', value, maxValueSet
-    }
-}
-export type SetButtonActionType = {
-    type: 'SET-BUTTON',
-    maxValueSet: number,
-    minValueSet: number,
-}
-export const setButtonAC = (maxValueSet: number, minValueSet: number): SetButtonActionType => {
-    return {type: 'SET-BUTTON', maxValueSet, minValueSet}
-}
-export type ResetActionType = {
-    type: 'RESET',
-    minValue: number
-}
-export const resetAC = (minValue: number): ResetActionType => {
-    return {type: 'RESET', minValue}
-}
-export type IncActionType = {
-    type: 'INC',
-    value: number,
-    maxValue: number
-}
-export const incAC = (value: number, maxValue: number): IncActionType => {
-    return {type: 'INC', value, maxValue}
+export type SetButtonActionType = ReturnType<typeof setButtonAC>
+export const setButtonAC = (maxValueSet: number, minValueSet: number) => {
+    return {type: 'SET-BUTTON', maxValueSet, minValueSet} as const
 }
 
+export type ResetActionType = ReturnType<typeof resetAC>
+export const resetAC = (minValue: number)=> {
+    return {type: 'RESET', minValue} as const
+}
+// export type IncActionType = {
+//     type: 'INC',
+//     value: number,
+//     maxValue: number
+// }
+// export const incAC = (value: number, maxValue: number): IncActionType => {
+//     return {type: 'INC', value, maxValue}
+// }
+export type IncActionType = ReturnType<typeof incAC>
+export const incAC = (value: number, maxValue: number)=> {
+    return {type: 'INC', value, maxValue} as const
+}

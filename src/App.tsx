@@ -4,10 +4,11 @@ import {Set} from './component/Set';
 import './App.css'
 import {setStateType} from './store/setReduser';
 import {useSelector} from 'react-redux';
-import {AppRootState} from './store/state';
+import {AppStateType} from './Bll/store';
+// import {AppRootState} from './store/state';
 
 export const App = () => {
-    let set = useSelector<AppRootState, setStateType>(state => state.set)
+    let set = useSelector<AppStateType, setStateType>(state => state.set)
     return (
         <div className="App1">
             <div className="App">
